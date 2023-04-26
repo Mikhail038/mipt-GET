@@ -1,0 +1,3 @@
+frequency (delta T): 1000.0Hz
+delta U: 0.012890625V
+Time passed: 106.78811597824097sec

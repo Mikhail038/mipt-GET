@@ -7,6 +7,8 @@ amount = 10000
 freq = 0.001
 
 measured_data = [0] * amount
+measured_values = [0] * amount
+
  
 if __name__ == "__main__": 
     def decimal2binary(value):
@@ -97,6 +99,8 @@ if __name__ == "__main__":
             print(j)
 
             measured_data[j] = voltage
+            measured_values[j] = value
+
 
 
             # open ()
@@ -104,23 +108,23 @@ if __name__ == "__main__":
         plt.plot (measured_data)
         plt.show ()
 
-        measured_data_str = [str(item) for item in measured_data]
+        measured_values_str = [str(item) for item in measured_values]
 
         with open ("7_data.txt", "w") as outfile:
-            outfile.write ("\n".join (measured_data_str))
+            outfile.write ("\n".join (measured_values_str))
 
-        with open ("7_settings.txt", "w") as outfile:
-            outfile.write ("frequency (delta T): ")
-            outfile.write (freq)
-            outfile.write ("\n")
+        with open ("7_settings.txt", "w") as setfile:
+            setfile.write ("frequency (delta T): ")
+            setfile.write (str(1/freq))
+            setfile.write ("Hz\n")
 
-            outfile.write ("delta U: ")
-            outfile.write (1/256)
-            outfile.write ("\n")
+            setfile.write ("delta U: ")
+            setfile.write (str(maxVoltage/256))
+            setfile.write ("V\n")
 
-            outfile.write ("Time passed: ")
-            outfile.write (time.time() - start_t)
-            outfile.write ("\n")
+            setfile.write ("Time passed: ")
+            setfile.write (str(time.time() - start_t))
+            setfile.write ("sec\n")
 
 
     finally:
