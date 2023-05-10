@@ -33,13 +33,22 @@ if __name__ == "__main__":
     plot.minorticks_on()
     plot.grid(which='minor', color = 'gray', linestyle = ':')
 
+    text = ("Процесс заряжания/разряжания конденсатора в RC цепи")
+    plt.text(5, 10, text, fontsize=28, style='oblique', ha='center',
+         va='top', wrap=True)
 
+    plot.annotate('Время зарядки = 4.05 с',
+            xy=(400, 400), xycoords='figure points', fontsize = 18)
+    
+    plot.annotate('Время разрядки = 5.95 с',
+        xy=(400, 350), xycoords='figure points', fontsize = 18)
+        
     plot.set_title("\n".join(wrap('Процесс заряжания/разряжания конденсатора в RC цепи', 60)), loc = 'center')
 
     plot.set_ylabel("Напряжение, В")
     plot.set_xlabel("Время, с")
 
-    # plot.legend(shadow = False, loc = 'right', fontsize = 30)
+    plot.legend(shadow = False, loc = 'right', fontsize = 30)
 
     fig.savefig('8_result.png')
     fig.savefig('8_result.svg')
